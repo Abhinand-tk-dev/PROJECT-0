@@ -8,6 +8,8 @@ import Navbaradmin from './components/Navbaradmin'
 import Viewproducts from './pages/admin/Viewproducts'
 import Home from './pages/buyer/Home'
 import Cart from './pages/buyer/Cart'
+import Homeseller from './pages/seller/Homeseller'
+import Orders from './pages/seller/Orders'
 
 //hhhhhhh
 function App() {
@@ -19,10 +21,12 @@ function App() {
     <Route path="/buyer" element={<Home />} />
     <Route path="/seller" element={<Navbarseller />} ></Route>
     <Route path='/admin' element={<Navbaradmin/>}></Route>
+    <Route path="/seller/homeseller" element={<Homeseller />} />
     <Route path="/seller/signupseller" element={<Signup/>} />
     <Route path="/seller/login" element={<Login/>}/>
     <Route path='/seller/addproduct' element={<Addproduct/>} />
     <Route path='/seller/getproductforseller' element={<Viewproduct/>} />
+    <Route path='/seller/orders' element={<Orders/>} />
     <Route path='/navbaradmin' element={<Navbaradmin/>} />
     <Route path='/admin/getproductforadmin' element={<Viewproducts/>} />
     <Route path='/buyer/cart' element={<Cart/>}/>
