@@ -19,7 +19,7 @@ function Navbaradmin() {
           </div>
           <ul>
             <li>
-              <a href="/getproductforadmin">viewproduct</a>
+              <a href="/admin/getproductforadmin">viewproduct</a>
             </li>
             <li>
               <a href="#">orders</a>

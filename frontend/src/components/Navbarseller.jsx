@@ -23,13 +23,16 @@ function Navbarseller() {
               <a href="#">Dashboard</a>
             </li>
             <li>
-              <a href="/addproduct">Add Products</a>
+              <a href="/seller/addproduct">Add Products</a>
             </li>
             <li>
-              <a href="/getproductforseller">View Products</a>
+              <a href="/seller/getproductforseller">View Products</a>
+            </li>
+            <li>
+              <a href="/seller/orders">Orders</a>
             </li>
             <li >
-              <a href="/login" className="text-yellow-600">Login</a>
+              <a href="/seller/login" className="text-yellow-600">Login</a>
             </li>
 
             <li>

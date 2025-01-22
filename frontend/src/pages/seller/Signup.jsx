@@ -42,7 +42,7 @@ function Signup() {
         formData.email = "",
         formData.password = "" 
         alert(response.data.message);
-        navigate('/login') 
+        navigate('/seller/login') 
       } catch (error) {
         setmessage(error.response?.data?.message || "something went wrong");  
       }

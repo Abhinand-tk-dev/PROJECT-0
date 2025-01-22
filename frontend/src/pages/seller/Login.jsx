@@ -12,7 +12,7 @@ function Login() {
   const handlesubmit = async(e) =>{
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/loginseller', {
+      const response = await fetch('http://localhost:3000/seller/loginseller', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ function Login() {
           
             setmessage(data.message || "Login Successful");
             alert("Login Successful");
-            navigate('/home');
+            navigate('/seller');
           } else {
             setmessage(data.message || "Login Failed");
             alert("Login Failed");
@@ -84,7 +84,7 @@ function Login() {
                  <a href="#">Forget Password?</a>
                </div>
                <div className="sign-up">
-                 <a href="#">Sign Up</a>
+                 <a href="/seller/signupseller">Sign Up</a>
                </div>
              </div>
            </div>
