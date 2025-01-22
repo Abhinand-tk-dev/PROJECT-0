@@ -1,7 +1,9 @@
 import {Routes,Route} from 'react-router-dom'
-import Navbarseller from './components/Navbarseller'
-import Signup from './pages/seller/Signup'
-import Login from './pages/seller/Login'
+// import Navbarseller from './components/Navbarseller'
+import Signupseller from './pages/seller/SellerSignup'
+import Signupbuyer from './pages/buyer/SignupBuyer'
+import Loginseller from './pages/seller/SellerLogin'
+import Loginbuyer from './pages/buyer/Loginbuyer'
 import Addproduct from './pages/seller/Addproduct'
 import Viewproduct from './pages/seller/Viewproduct'
 import Navbaradmin from './components/Navbaradmin'
@@ -18,15 +20,13 @@ function App() {
   return (
     <>
     <Routes>
-    <Route path="/buyer" element={<Home />} />
-    <Route path="/seller" element={<Navbarseller />} ></Route>
-    <Route path='/admin' element={<Navbaradmin/>}></Route>
-    <Route path="/seller/homeseller" element={<Homeseller />} />
-    <Route path="/seller/signupseller" element={<Signup/>} />
-    <Route path="/seller/login" element={<Login/>}/>
-    <Route path='/seller/addproduct' element={<Addproduct/>} />
-    <Route path='/seller/getproductforseller' element={<Viewproduct/>} />
-    <Route path='/seller/orders' element={<Orders/>} />
+    <Route path="/" element={<Home />} />
+    <Route path="/signupseller" element={<Signupseller/>} />
+    <Route path="/signupbuyer" element={<Signupbuyer/>} />
+    <Route path="/loginseller" element={<Loginseller/>}/>
+    <Route path="/loginbuyer" element={<Loginbuyer/>}/>
+    <Route path='/addproduct' element={<Addproduct/>} />
+    <Route path='/getproductforseller' element={<Viewproduct/>} />
     <Route path='/navbaradmin' element={<Navbaradmin/>} />
     <Route path='/admin/getproductforadmin' element={<Viewproducts/>} />
     <Route path='/buyer/cart' element={<Cart/>}/>
