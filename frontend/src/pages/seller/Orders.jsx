@@ -1,9 +1,8 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbarseller from '../../components/Navbarseller';
 import axios from 'axios';
 
 function Orders() {
-  const [statuses, setStatuses] = useState({});
   const [products, setProducts] = useState([]);
   const [refresh, setRefresh] = useState(false); // Add a refresh state
 // console.log(products)
@@ -35,20 +34,24 @@ function Orders() {
       }
     };
     fetchProducts();
-  }, [refresh]); // Add refresh as a dependency
+  }, [refresh]);
 
-  const handleStatusChange = (productId, newStatus) => {
-    setStatuses(prevStatuses => ({
-      ...prevStatuses,
-      [productId]: newStatus,
-    }));
+  
+
+  const handleStatusChange = async (orderId, newStatus) => {
+    try {
+      await axios.patch(`/api/orders/${orderId}`, { status: newStatus });
+      // Optionally, refresh the orders list or update the state
+    } catch (error) {
+      console.error("Error updating order status:", error);
+    }
   };
 
   return (
     <>
       <Navbarseller />
       <div className="product-container">
-        <h1>Orders List</h1>
+        <h1>Order List</h1>
         <table className="product-table">
           <thead>
             <tr>
@@ -59,7 +62,7 @@ function Orders() {
               <th>Stock</th>
               <th>Seller Price</th>
               <th>Category</th>
-              <th>Status</th> {/* New Status Column */}
+              <th>Order Status</th> {/* New column for Order Status */}
             </tr>
           </thead>
           <tbody>
@@ -69,7 +72,7 @@ function Orders() {
                   <img
                     src={`http://localhost:3000/uploads/${product?.images}`} 
                     alt={product.name}
-                    className="product-image"
+                    className="product-image"                   
                   />
                 </td>
                 <td>{product.name}</td>
@@ -80,15 +83,14 @@ function Orders() {
                 <td>{product.category}</td>
                 <td>
                   <select 
-                    value={statuses[product._id] || ''} 
+                    value={product.orderStatus} 
                     onChange={(e) => handleStatusChange(product._id, e.target.value)}
                   >
-                    <option value="">Select Status</option>
                     <option value="Approved">Approved</option>
                     <option value="Dispatched">Dispatched</option>
                     <option value="Delivered">Delivered</option>
                   </select>
-                </td> {/* Dropdown for Status */}
+                </td>
               </tr>
             ))}
           </tbody>
