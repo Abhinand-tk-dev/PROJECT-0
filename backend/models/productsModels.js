@@ -25,6 +25,9 @@ const productSchema = new mongoose.Schema({
     min: 0,
     required: true,
   },
+  stock: {
+    type: Number,
+  },
   images:[{type:String}], 
   createdAt: {
     type: Date,

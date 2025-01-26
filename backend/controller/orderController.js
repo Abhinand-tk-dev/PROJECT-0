@@ -164,6 +164,63 @@ const createOrderItems = async (orderItems) => {
   };
 };
 
+// New function to update order status and check item statuses for admin
+const updateOrderStatusAndCheckItems = async (req, res) => {
+  const { orderId, status } = req.body;
+
+  // Validate status
+  const validStatuses = ['Approved', 'processing', 'Delivered', 'Cancelled'];
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({ message: 'Invalid status value' });
+  }
+
+  try {
+    // Update the order status
+    const updatedOrder = await Order.findByIdAndUpdate(
+      orderId,
+      { orderStatus: status },
+      { new: true }
+    );
+
+    if (!updatedOrder) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    // Check the status of each item in orderItems
+    const allItemsDeliveredOrCancelled = updatedOrder.orderItems.every(item => 
+      item.status === 'Delivered' || item.status === 'Cancelled'
+    );
+
+    // Update the order status to 'Completed' if all items are delivered or cancelled
+    if (allItemsDeliveredOrCancelled) {
+      updatedOrder.orderStatus = 'Completed';
+      await updatedOrder.save();
+    }
+
+    res.status(200).json(updatedOrder);
+  } catch (error) {
+    console.error("Error updating order status:", error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+// api to get orders for seller
+const getOrdersForSeller = async (req, res) => {
+  const sellerId = req.params.sellerId;
+
+  try {
+    const orders = await Order.find({
+      'orderItems.sellerId': sellerId,
+      orderStatus: 'Processing' // Only fetch orders with status 'Processing'
+    }).populate('orderItems.productId');
+
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error("Error fetching orders for seller:", error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 const calculateSubtotal = (orderItemsData) => {
   return orderItemsData.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
 };
@@ -172,4 +229,7 @@ const calculateTotal = (orderItemsData) => {
   return calculateSubtotal(orderItemsData); // You can add taxes, shipping costs here
 };
 
-module.exports = { createOrder, getOrderHistory };
+module.exports = { createOrder, 
+  getOrderHistory, 
+  updateOrderStatusAndCheckItems, 
+  getOrdersForSeller };

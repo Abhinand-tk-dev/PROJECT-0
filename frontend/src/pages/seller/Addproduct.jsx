@@ -42,7 +42,7 @@ console.log(formData);
   };
 
 
-  // Handle form submission
+  // Handle form submissionl 
   const handleSubmit = async(e) => {
     e.preventDefault();
         // Create FormData for file upload
