@@ -1,0 +1,28 @@
+.order-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-table th, .order-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.order-table th {
+  background-color: #f2f2f2;
+}
+
+.order-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.order-table .order-status {
+  font-weight: bold;
+}

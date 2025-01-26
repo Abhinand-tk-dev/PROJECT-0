@@ -12,6 +12,7 @@ import Home from './pages/buyer/Home'
 import Cart from './pages/buyer/Cart'
 import Homeseller from './pages/seller/Homeseller'
 import Orders from './pages/seller/Orders'
+import OrderPage from './pages/admin/OrderPage'
 
 //hhhhhhh
 function App() {
@@ -29,7 +30,8 @@ function App() {
     <Route path='/getproductforseller' element={<Viewproduct/>} />
     <Route path='/navbaradmin' element={<Navbaradmin/>} />
     <Route path='/admin/getproductforadmin' element={<Viewproducts/>} />
-    <Route path='/buyer/cart' element={<Cart/>}/>
+    <Route path='/admin/order' element={<OrderPage/>} />
+    <Route path='/cart' element={<Cart/>}/>
 
     </Routes>
     </>

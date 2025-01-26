@@ -229,4 +229,7 @@ const calculateTotal = (orderItemsData) => {
   return calculateSubtotal(orderItemsData); // You can add taxes, shipping costs here
 };
 
-module.exports = { createOrder, getOrderHistory, updateOrderStatusAndCheckItems, getOrdersForSeller };
+module.exports = { createOrder, 
+  getOrderHistory, 
+  updateOrderStatusAndCheckItems, 
+  getOrdersForSeller };
