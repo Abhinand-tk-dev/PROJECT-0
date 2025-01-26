@@ -32,7 +32,7 @@ function Navbarseller() {
               <a href="/seller/orders">Orders</a>
             </li>
             <li >
-              <a href="/seller/login" className="text-yellow-600">Login</a>
+              <a href="/seller/loginseller" className="text-yellow-600">Login</a>
             </li>
 
             <li>

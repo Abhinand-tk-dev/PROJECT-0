@@ -11,9 +11,9 @@ const {createProduct,
 const upload = require('../middleware/uploadImage')
 
 
-productRouter.post('/addproduct',Auth,upload.array("images",2),createProduct)
+productRouter.post('/addproduct',Auth,roleMiddleware("seller"),upload.array("images",2),createProduct)
 productRouter.get('/getproduct',getProducts)
-productRouter.get('/getproductforseller',Auth,roleMiddleware("seller"),Auth,getProductsforseller)
+productRouter.get('/getproductforseller',Auth,getProductsforseller)
 
 //admin side routes
 productRouter.get('/getproductapproval',Auth,roleMiddleware("admin"),getProductForApproval)

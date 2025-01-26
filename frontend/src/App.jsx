@@ -24,10 +24,10 @@ function App() {
     <Route path="/" element={<Home />} />
     <Route path="/signupseller" element={<Signupseller/>} />
     <Route path="/signupbuyer" element={<Signupbuyer/>} />
-    <Route path="/loginseller" element={<Loginseller/>}/>
+    <Route path="/seller/loginseller" element={<Loginseller/>}/>
     <Route path="/loginbuyer" element={<Loginbuyer/>}/>
-    <Route path='/addproduct' element={<Addproduct/>} />
-    <Route path='/getproductforseller' element={<Viewproduct/>} />
+    <Route path='/seller/addproduct' element={<Addproduct/>} />
+    <Route path='/seller/getproductforseller' element={<Viewproduct/>} />
     <Route path='/navbaradmin' element={<Navbaradmin/>} />
     <Route path='/admin/getproductforadmin' element={<Viewproducts/>} />
     <Route path='/admin/order' element={<OrderPage/>} />
